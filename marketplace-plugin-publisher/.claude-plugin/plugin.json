@@ -1,0 +1,8 @@
+{
+  "name": "marketplace-plugin-publisher",
+  "version": "0.1.0",
+  "description": "Enable business users to create and submit plugins to the organisation marketplace through a guided, no-code workflow. IT admins review and approve submissions via GitHub pull requests.",
+  "author": {
+    "name": "Joe Plevin"
+  }
+}

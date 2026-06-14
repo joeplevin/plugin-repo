@@ -1,0 +1,48 @@
+name: Notify User of Plugin Decision
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  notify-merged:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send approval email
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
+          to: ${{ secrets.SUBMITTER_EMAIL }}
+          from: Plugin Marketplace <${{ secrets.MAIL_USERNAME }}>
+          subject: "Your plugin has been approved: ${{ github.event.pull_request.title }}"
+          body: |
+            Great news! Your plugin has been approved and is now live in the marketplace.
+
+            Plugin: ${{ github.event.pull_request.title }}
+            View it here: ${{ github.event.pull_request.html_url }}
+
+  notify-rejected:
+    if: github.event.pull_request.merged == false
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send rejection email
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
+          to: ${{ secrets.SUBMITTER_EMAIL }}
+          from: Plugin Marketplace <${{ secrets.MAIL_USERNAME }}>
+          subject: "Plugin submission update: ${{ github.event.pull_request.title }}"
+          body: |
+            Unfortunately your plugin submission was not approved.
+
+            Plugin: ${{ github.event.pull_request.title }}
+            Reviewer comments: ${{ github.event.pull_request.body }}
+
+            You can view the full review here: ${{ github.event.pull_request.html_url }}
