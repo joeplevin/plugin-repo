@@ -1,0 +1,28 @@
+name: Notify Admin of New Plugin Submission
+
+on:
+  pull_request:
+    types: [opened]
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send admin notification email
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
+          to: ${{ secrets.ADMIN_EMAIL }}
+          from: Plugin Marketplace <${{ secrets.MAIL_USERNAME }}>
+          subject: "New Plugin Submission: ${{ github.event.pull_request.title }}"
+          body: |
+            A new plugin has been submitted for review.
+
+            Submitted by: ${{ github.event.pull_request.user.login }}
+            Plugin name: ${{ github.event.pull_request.title }}
+            Description: ${{ github.event.pull_request.body }}
+
+            Review it here: ${{ github.event.pull_request.html_url }}
