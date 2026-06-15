@@ -1,0 +1,13 @@
+{
+  "name": "marketplace-plugin-publisher",
+  "owner": {
+    "name": "Joe Plevin"
+  },
+  "plugins": [
+    {
+      "name": "marketplace-plugin-publisher",
+      "source": "./marketplace-plugin-publisher",
+      "description": "Enable business users to create and submit plugins to the organisation marketplace through a guided, no-code workflow. IT admins review and approve submissions via GitHub pull requests."
+    }
+  ]
+}
