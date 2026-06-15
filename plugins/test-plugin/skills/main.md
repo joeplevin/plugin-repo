@@ -1,16 +1,19 @@
 ---
-name: bullshit-plugin-main
+name: test-plugin-main
 description: >
-  nothing
+  test
 ---
 
 # Skill: bullshit-plugin-main
 
 ## Purpose
-nothing
+
+test
 
 ## Trigger phrases
-- "let's waste time"
+
+- "test plugin"
 
 ## Behaviour
+
 [Placeholder — to be defined by the plugin author or IT admin during review]

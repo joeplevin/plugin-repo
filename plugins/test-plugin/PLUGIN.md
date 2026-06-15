@@ -1,15 +1,19 @@
-# bullshit-plugin
+# test-plugin
 
 ## Description
-nothing
+
+test plugin
 
 ## Problem it solves
-doesn't solve a thing
+
+none
 
 ## Intended users
+
 noone
 
 ## Connectors
+
 none
 
-Submitter Email: hello@test.com
+Submitter Email: jbplev@gmail.com
