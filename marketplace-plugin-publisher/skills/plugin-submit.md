@@ -13,6 +13,7 @@ Take the generated plugin files from plugin-builder and submit them to GitHub as
 ## On invoke
 
 Expect the following to be passed from plugin-builder:
+
 - Plugin name (e.g. `expense-approvals`)
 - Plugin files path (e.g. `~/.claude/marketplace-drafts/expense-approvals/`)
 
@@ -23,6 +24,7 @@ If either is missing, tell the user something went wrong and suggest they go bac
 ### Step 1 — Verify files
 
 Check that the following files exist at the provided path:
+
 - `PLUGIN.md`
 - `skills/main.md`
 
@@ -41,6 +43,8 @@ Copy the generated plugin files into the repo under the `plugins/` directory:
 
     plugins/
     └── {plugin-name}/
+        ├── .claude-plugin/
+        │   └── marketplace.json
         ├── PLUGIN.md
         └── skills/
             └── main.md
@@ -92,6 +96,7 @@ Do not show the user any Git output, branch names, or technical details. Keep it
 ## Error handling
 
 If any step fails:
+
 - Do not leave the user without feedback
 - Tell them in plain language what went wrong
 - Suggest they contact their IT admin if the problem persists

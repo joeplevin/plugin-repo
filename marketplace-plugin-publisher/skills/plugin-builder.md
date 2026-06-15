@@ -114,6 +114,22 @@ Write to `~/.claude/marketplace-drafts/{plugin-name}/skills/main.md`:
     ## Behaviour
     [Placeholder — to be defined by the plugin author or IT admin during review]
 
+File 3 — .claude-plugin/marketplace.json
+
+Write to `~/.claude/marketplace-drafts/{plugin-name}/.claude-plugin/marketplace.json`:
+
+    {
+      "name": "{plugin-name}",
+      "version": "0.1.0",
+      "description": "{description}",
+      "author": {
+        "name": "{intended-users}"
+      },
+      "skills": [
+        "skills/main.md"
+      ]
+    }
+
 ## Confirmation
 
 Show the user a plain-language summary:
@@ -133,6 +149,7 @@ If the user requests changes, update the relevant field, regenerate the affected
 Once the user confirms, say: "Great — I'll submit this for review now."
 
 Then invoke the `plugin-submit` skill, passing:
+
 - The plugin name
 - The path `~/.claude/marketplace-drafts/{plugin-name}/`
 
